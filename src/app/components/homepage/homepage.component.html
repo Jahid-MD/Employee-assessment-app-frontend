@@ -1,7 +1,7 @@
 <div class="wrapper">
   <h1 class="text-center my-4">Employees List</h1>
   <div class="d-flex align-items-center justify-content-start flex-wrap">
-    <div class="col-4 py-3 px-2">
+    <div *ngFor="let employee of employees['keys']" class="col-4 py-3 px-2">
       <div class="d-flex shadow rounded-3 position-relative">
         <img
           class="m-2"
@@ -10,292 +10,27 @@
           width="150px"
         />
         <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
+          <p class="lh-sm"><b>Name : </b>{{ employees[employee].name }}</p>
+          <p class="lh-sm"><b>Age : </b> {{ employees[employee].age }}</p>
+          <p class="lh-sm">
+            <b>Phone No. : </b> {{ employees[employee].phoneNumber }}
+          </p>
+          <p class="lh-sm">
+            <b>Designation : </b> {{ employees[employee].designation }}
+          </p>
+          <p class="lh-sm">
+            <b>Assessment score : </b> {{ employees[employee].score }}/10
+          </p>
         </div>
         <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
+          <a (click)="removeEmployee(employee)" class="text-success">
             <mat-icon>delete_outline</mat-icon>
           </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
-            <mat-icon>create</mat-icon>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 py-3 px-2">
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm"><b>Name :</b> Zahid</p>
-          <p class="lh-sm"><b>Age :</b> 25</p>
-          <p class="lh-sm"><b>Phone No. :</b> 8974013980</p>
-          <p class="lh-sm"><b>Designation :</b> Angular Developer</p>
-          <p class="lh-sm"><b>Assessment :</b> 08/10</p>
-        </div>
-        <div class="position-absolute top-0 end-0 h6 m-2">
-          <a class="text-success" href="#">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
-          <a class="text-success" href="#">
+          <a
+            class="text-success"
+            (click)="editProfile(employees[employee])"
+            routerLink="/edit-add"
+          >
             <mat-icon>create</mat-icon>
           </a>
         </div>

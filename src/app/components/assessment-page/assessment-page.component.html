@@ -8,18 +8,40 @@
           <!-- <mat-option *ngFor="let animal of animals" [value]="animal">
               {{animal.name}}
             </mat-option> -->
-          <mat-option value="emp1">Employee 1</mat-option>
-          <mat-option value="emp1">Employee 2</mat-option>
-          <mat-option value="emp1">Employee 3</mat-option>
-          <mat-option value="emp1">Employee 4</mat-option>
-          <mat-option value="emp1">Employee 5</mat-option>
+          <mat-option
+            *ngFor="let employee of employeesName"
+            value="{{ employee }}"
+            >{{ employee }}</mat-option
+          >
         </mat-select>
         <!-- <mat-error *ngIf="animalControl.hasError('required')"
             >Please choose an animal</mat-error
       > -->
       </mat-form-field>
     </div>
-    <div class="p-4 d-block quiz-q shadow my-4">
+    <div
+      *ngFor="let question of quizData['keys']"
+      class="p-4 d-block quiz-q shadow my-4"
+    >
+      <mat-label class="d-block mb-2 fw-bold">{{
+        quizData[question].question
+      }}</mat-label>
+      <mat-radio-group>
+        <mat-radio-button class="d-block m-2" value="1">
+          Always
+        </mat-radio-button>
+        <mat-radio-button class="d-block m-2" value="2">
+          Auto
+        </mat-radio-button>
+        <mat-radio-button class="d-block m-2" value="3">
+          Always
+        </mat-radio-button>
+        <mat-radio-button class="d-block m-2" value="4">
+          Auto
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <!--   <div class="p-4 d-block quiz-q shadow my-4">
       <mat-label class="d-block mb-2 fw-bold"
         >Q1.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
         laboriosam molestiae cumque voluptatibus tempora assumenda aut nisi odit
@@ -60,28 +82,7 @@
           Auto
         </mat-radio-button>
       </mat-radio-group>
-    </div>
-    <div class="p-4 d-block quiz-q shadow my-4">
-      <mat-label class="d-block mb-2 fw-bold"
-        >Q1.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-        laboriosam molestiae cumque voluptatibus tempora assumenda aut nisi odit
-        incidunt exercitationem! ?</mat-label
-      >
-      <mat-radio-group>
-        <mat-radio-button class="d-block m-2" value="1">
-          Always
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="2">
-          Auto
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="3">
-          Always
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="4">
-          Auto
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
+    </div> -->
     <div class="text-center">
       <button mat-raised-button class="bg-primary text-white">Submit</button>
     </div>

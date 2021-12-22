@@ -1,7 +1,9 @@
 <div class="d-flex align-center justify-content-center p-5">
-  <mat-card class="edit-card">
+  <mat-card class="add-card">
     <mat-card-header>
-      <mat-card-title class="text-center">Edit Employee Details</mat-card-title>
+      <mat-card-title class="text-center"
+        >Add New Employee Details</mat-card-title
+      >
     </mat-card-header>
 
     <mat-card-content>
@@ -46,7 +48,7 @@
             matInput
             placeholder="Designation"
             id="name"
-            formControlName="designation"
+            formControlName="Designation"
             class=""
           />
         </mat-form-field>
@@ -56,7 +58,7 @@
             class="bg-primary text-white"
             [disabled]="!formProfile.valid"
           >
-            Save
+            Sumbit
           </button>
         </div>
       </form>

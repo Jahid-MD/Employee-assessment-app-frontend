@@ -10,10 +10,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { RouterModule, Routes } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddPageComponent } from './components/add-page/add-page.component';
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'edit-add', component: EditAddProfileComponent },
+  { path: 'add', component: AddPageComponent },
   { path: 'assessment', component: AssessmentPageComponent },
 ];
 
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
     EditAddProfileComponent,
     AssessmentPageComponent,
     HeaderComponent,
+    AddPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
