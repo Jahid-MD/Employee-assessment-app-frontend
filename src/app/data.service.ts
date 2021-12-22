@@ -29,6 +29,6 @@ export class DataService {
       ...employeeUpdateData,
     };
     console.log(this.employeeMasterData[employeeUpdateData['id']]);
-    console.log();
+    console.log(this.employeeMasterData);
   }
 }
