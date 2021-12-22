@@ -98,4 +98,5 @@ export const quizData = {
     'ques8',
     'ques9',
   ],
+  ans: [3, 1, 3, 2, 1, 4, 4, 1, 4, 3],
 };

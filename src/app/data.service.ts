@@ -31,4 +31,19 @@ export class DataService {
     console.log(this.employeeMasterData[employeeUpdateData['id']]);
     console.log(this.employeeMasterData);
   }
+  updateScore(scoreData) {
+    console.log(scoreData);
+    let count = 0;
+    let answerArr = scoreData['ans'];
+    let correctAns = this.quizMasterData['ans'];
+    for (let i = 0; i < 10; i++) {
+      if (answerArr[i]) {
+        if (answerArr[i] == correctAns[i]) {
+          count = count + 1;
+        }
+      }
+    }
+    this.employeeMasterData[scoreData.id]['score'] = count;
+    console.log(this.employeeMasterData[scoreData.id]);
+  }
 }

@@ -1,10 +1,10 @@
 <div class="wrapper my-4 pb-4">
-  <h2 class="text-center">Employee selection</h2>
-  <form action="">
+  <h2 class="text-center">Employee selection ID</h2>
+  <form [formGroup]="testFormProfile" (ngSubmit)="onSubmit()" action="">
     <div class="d-flex justify-content-center w-100">
       <mat-form-field class="w-50" appearance="outline">
-        <mat-label>Select Employee</mat-label>
-        <mat-select>
+        <mat-label>Select Employee ID</mat-label>
+        <mat-select formControlName="employeeId">
           <!-- <mat-option *ngFor="let animal of animals" [value]="animal">
               {{animal.name}}
             </mat-option> -->
@@ -26,65 +26,29 @@
       <mat-label class="d-block mb-2 fw-bold">{{
         quizData[question].question
       }}</mat-label>
-      <mat-radio-group>
+      <mat-radio-group formControlName="{{ question }}">
         <mat-radio-button class="d-block m-2" value="1">
-          Always
+          {{ quizData[question]["options"][0] }}
         </mat-radio-button>
         <mat-radio-button class="d-block m-2" value="2">
-          Auto
+          {{ quizData[question]["options"][1] }}
         </mat-radio-button>
         <mat-radio-button class="d-block m-2" value="3">
-          Always
+          {{ quizData[question]["options"][2] }}
         </mat-radio-button>
         <mat-radio-button class="d-block m-2" value="4">
-          Auto
+          {{ quizData[question]["options"][3] }}
         </mat-radio-button>
       </mat-radio-group>
     </div>
-    <!--   <div class="p-4 d-block quiz-q shadow my-4">
-      <mat-label class="d-block mb-2 fw-bold"
-        >Q1.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-        laboriosam molestiae cumque voluptatibus tempora assumenda aut nisi odit
-        incidunt exercitationem! ?</mat-label
-      >
-      <mat-radio-group>
-        <mat-radio-button class="d-block m-2" value="1">
-          Always
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="2">
-          Auto
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="3">
-          Always
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="4">
-          Auto
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="p-4 d-block quiz-q shadow my-4">
-      <mat-label class="d-block mb-2 fw-bold"
-        >Q1.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-        laboriosam molestiae cumque voluptatibus tempora assumenda aut nisi odit
-        incidunt exercitationem! ?</mat-label
-      >
-      <mat-radio-group>
-        <mat-radio-button class="d-block m-2" value="1">
-          Always
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="2">
-          Auto
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="3">
-          Always
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="4">
-          Auto
-        </mat-radio-button>
-      </mat-radio-group>
-    </div> -->
     <div class="text-center">
-      <button mat-raised-button class="bg-primary text-white">Submit</button>
+      <button
+        mat-raised-button
+        class="bg-primary text-white"
+        [disabled]="!testFormProfile.valid"
+      >
+        Submit
+      </button>
     </div>
   </form>
 </div>
