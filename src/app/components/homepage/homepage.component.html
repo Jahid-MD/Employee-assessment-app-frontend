@@ -1,7 +1,10 @@
 <div class="wrapper">
   <h1 class="text-center my-4">Employees List</h1>
   <div class="d-flex align-items-center justify-content-start flex-wrap">
-    <div *ngFor="let employee of employees['keys']" class="col-4 py-3 px-2">
+    <div
+      *ngFor="let employee of employees['keys']"
+      class="col-4 py-3 px-2 employee-card"
+    >
       <div class="d-flex shadow rounded-3 position-relative">
         <img
           class="m-2"
@@ -23,15 +26,15 @@
           </p>
         </div>
         <div class="position-absolute top-0 end-0 h6 m-2">
-          <a (click)="removeEmployee(employee)" class="text-success">
-            <mat-icon>delete_outline</mat-icon>
-          </a>
           <a
-            class="text-success"
+            class="icons"
             (click)="editProfile(employees[employee])"
             routerLink="/edit-add"
           >
-            <mat-icon>create</mat-icon>
+            <mat-icon inline="true">create</mat-icon>
+          </a>
+          <a (click)="removeEmployee(employee)" class="icons">
+            <mat-icon inline="true">delete_outline</mat-icon>
           </a>
         </div>
       </div>

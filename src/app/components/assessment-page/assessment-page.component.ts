@@ -72,6 +72,6 @@ export class AssessmentPageComponent implements OnInit {
     this.testFormProfile.reset({
       employeeId: [''],
     });
-    this.router.navigate['/'];
+    this.router.navigate(['/']);
   }
 }

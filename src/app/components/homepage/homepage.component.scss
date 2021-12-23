@@ -1,1 +1,26 @@
-
+.employee-card :hover {
+  transform: scale(1.03);
+  transition: ease 300ms;
+  p,
+  img,
+  div,
+  .icons {
+    transform: none;
+    transition: none;
+  }
+  .icons {
+    visibility: visible;
+    color: rgb(194, 206, 206);
+  }
+  .icons:hover {
+    color: rgb(76, 82, 82);
+  }
+  .icons:last-child:hover {
+    color: rgb(218, 34, 21);
+  }
+}
+.icons {
+  font-size: 20px;
+  visibility: hidden;
+  cursor: pointer;
+}
