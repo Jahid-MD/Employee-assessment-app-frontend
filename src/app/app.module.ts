@@ -12,6 +12,7 @@ import { MaterialModule } from './material/material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddPageComponent } from './components/add-page/add-page.component';
+import { HttpClientModule } from '@angular/common/http';
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'edit-add', component: EditAddProfileComponent },
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MaterialModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

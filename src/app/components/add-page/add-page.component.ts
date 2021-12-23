@@ -19,7 +19,7 @@ export class AddPageComponent implements OnInit {
       [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
     ],
     age: ['', [Validators.required, Validators.max(65), Validators.min(18)]],
-    Designation: ['', Validators.required],
+    designation: ['', Validators.required],
     score: ['N/A'],
   });
   constructor(private dataService: DataService, private addForm: FormBuilder) {}
@@ -32,7 +32,7 @@ export class AddPageComponent implements OnInit {
       name: [''],
       phoneNumber: [''],
       age: [''],
-      Designation: [''],
+      designation: [''],
     });
   }
 }

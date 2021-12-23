@@ -17,7 +17,13 @@ export class HomepageComponent implements OnInit, OnDestroy {
   // sendData(profileData: object) {
   //   this.editProfileData.emit;
   // }
-  constructor(private employeesDataService: DataService) {}
+  constructor(private employeesDataService: DataService) {
+    this.employeesDataService.employeeData.subscribe((data) => {
+      this.employees = data;
+    });
+    console.log('=====>', this.employees);
+    this.employeesDataService.fetchUpdateData();
+  }
 
   ngOnInit(): void {
     // console.log(this.employeesDataService.employeeMasterData);

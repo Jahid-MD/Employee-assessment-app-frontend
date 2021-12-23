@@ -1,28 +1,35 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Employee } from './Employee';
 import { appData } from './employeeData';
 import { quizData } from './quizData';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { HomepageComponent } from './components/homepage/homepage.component';
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  employeeMasterData: object = appData;
+  employeeMasterData: object = {};
   quizMasterData: object = quizData;
   editProfileData: object;
 
   employeeData = new BehaviorSubject(this.employeeMasterData);
-  constructor() {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.http.get('api/employees').subscribe((data) => {
+      console.log(data);
+      this.employeeData.next(data);
+    });
+  }
 
+  fetchUpdateData() {
+    this.http.get('api/employees').subscribe((data) => {
+      this.employeeData.next(data);
+    });
+  }
   addEmployee(newEmployeeData) {
-    let keys = this.employeeMasterData['keys'];
-    keys = keys[keys.length - 1];
-    let id = Number(keys.split('emp')[1]) + 1;
-    newEmployeeData['id'] = 'emp' + id;
     console.log(newEmployeeData);
-    this.employeeMasterData['emp' + id] = newEmployeeData;
-    this.employeeMasterData['keys'].push('emp' + id);
-    console.log(this.employeeMasterData);
+    this.http.post('/api/addEmployee', newEmployeeData).subscribe();
+    this.router.navigate(['/']);
   }
   updateEmployee(employeeUpdateData) {
     this.employeeMasterData[employeeUpdateData['id']] = {
