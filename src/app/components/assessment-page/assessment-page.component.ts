@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -5,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 @Component({
   selector: 'app-assessment-page',
@@ -12,13 +14,24 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./assessment-page.component.scss'],
 })
 export class AssessmentPageComponent implements OnInit {
-  constructor(
-    private quizDataService: DataService,
-    private assessmentForm: FormBuilder
-  ) {}
-  quizData: object;
+  quizData: object = { keys: [] };
   employeesName: string[];
   scoreData: object;
+  constructor(
+    private quizDataService: DataService,
+    private assessmentForm: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.http.get('./api/quizData').subscribe((data) => {
+      console.log(data);
+      this.quizData = data;
+    });
+    this.quizDataService.employeeData.subscribe((data) => {
+      this.employeesName = data['keys'];
+    });
+  }
+
   testFormProfile = this.assessmentForm.group({
     employeeId: ['', Validators.required],
     ques0: [null],
@@ -33,25 +46,32 @@ export class AssessmentPageComponent implements OnInit {
     ques9: [null],
   });
   ngOnInit(): void {
-    this.quizData = this.quizDataService.quizMasterData;
     console.log('=====> quiz data', this.quizData);
-    this.employeesName = this.quizDataService.employeeMasterData['keys'];
-    console.log('employees', this.employeesName);
+
+    console.log('employees-------', this.employeesName);
   }
   onSubmit() {
     let answers = [];
+    let id = this.testFormProfile.value.employeeId;
+    console.log('id...............', id);
     for (let keys in this.testFormProfile.value) {
       if (keys != 'employeeId') {
         answers.push(this.testFormProfile.value[keys]);
       }
     }
-    this.scoreData = {
-      id: this.testFormProfile.value.employeeId,
-      ans: answers,
-    };
-    this.quizDataService.updateScore(this.scoreData);
+    // this.scoreData = {
+    //   id: this.testFormProfile.value.employeeId,
+    //   ans: answers,
+    // };
+    // this.quizDataService.updateScore(this.scoreData);
+    // // this.testFormProfile.reset({
+    // //   employeeId: [''],
+    // // });
+
+    this.http.put(`/api/updateScore/${id}`, { answers }).subscribe();
     this.testFormProfile.reset({
       employeeId: [''],
     });
+    this.router.navigate['/'];
   }
 }

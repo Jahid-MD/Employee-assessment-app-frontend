@@ -32,25 +32,17 @@ export class DataService {
     this.router.navigate(['/']);
   }
   updateEmployee(employeeUpdateData) {
-    this.employeeMasterData[employeeUpdateData['id']] = {
-      ...employeeUpdateData,
-    };
-    console.log(this.employeeMasterData[employeeUpdateData['id']]);
-    console.log(this.employeeMasterData);
+    this.http.put('/api/updateEmployee', employeeUpdateData).subscribe();
+    this.router.navigate(['/']);
   }
-  updateScore(scoreData) {
-    console.log(scoreData);
-    let count = 0;
-    let answerArr = scoreData['ans'];
-    let correctAns = this.quizMasterData['ans'];
-    for (let i = 0; i < 10; i++) {
-      if (answerArr[i]) {
-        if (answerArr[i] == correctAns[i]) {
-          count = count + 1;
-        }
-      }
-    }
-    this.employeeMasterData[scoreData.id]['score'] = count;
-    console.log(this.employeeMasterData[scoreData.id]);
+
+  removeEmployee(employeeData) {
+    console.log('delted employee........', employeeData);
+    this.http
+      .delete(`/api/removeEmployee/${employeeData}`)
+      .subscribe((data) => {
+        console.log(data);
+      });
+    this.fetchUpdateData();
   }
 }

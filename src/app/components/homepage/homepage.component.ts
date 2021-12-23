@@ -34,11 +34,12 @@ export class HomepageComponent implements OnInit, OnDestroy {
     console.log('=====>', this.employees);
   }
   removeEmployee(employee) {
-    console.log(employee);
-    console.log(this.employees[employee]);
-    this.employees['keys'].splice(this.employees['keys'].indexOf(employee), 1);
-    console.log(this.employees);
-    delete this.employees[employee];
+    // console.log(employee);
+    // console.log(this.employees[employee]);
+    // this.employees['keys'].splice(this.employees['keys'].indexOf(employee), 1);
+    // // console.log('....', this.employees);
+    this.employeesDataService.removeEmployee(employee);
+    // delete this.employees[employee];
   }
   editProfile(profileData) {
     console.log('.........home page', profileData);
