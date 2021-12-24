@@ -17,6 +17,7 @@ import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.comp
 })
 export class HomepageComponent implements OnInit, OnDestroy {
   employees: object = { keys: [0] };
+  search: string;
   // @Output() editProfileData = new EventEmitter<object>();
   // sendData(profileData: object) {
   //   this.editProfileData.emit;
@@ -67,6 +68,10 @@ export class HomepageComponent implements OnInit, OnDestroy {
   }
   goToAddPage() {
     this.router.navigate(['./add']);
+  }
+
+  onChangeSearchData(event) {
+    this.employeesDataService.findEmployee(this.search.toLowerCase());
   }
   ngOnDestroy(): void {}
 }

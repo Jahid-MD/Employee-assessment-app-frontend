@@ -45,4 +45,12 @@ export class DataService {
       });
     this.fetchUpdateData();
   }
+  findEmployee(searchData) {
+    console.log('serach api');
+    this.http.get(`/api/employees/${searchData}`).subscribe((data) => {
+      this.employeeMasterData = data;
+      console.log('......', data);
+      this.employeeData.next(data);
+    });
+  }
 }

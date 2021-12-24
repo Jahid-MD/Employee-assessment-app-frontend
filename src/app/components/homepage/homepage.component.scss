@@ -1,3 +1,14 @@
+.search-bar {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline-color: transparent;
+}
+
+.search-bar:focus {
+  outline-color: rgb(142, 160, 194);
+}
 .employee-card :hover {
   transform: scale(1.03);
   transition: ease 300ms;

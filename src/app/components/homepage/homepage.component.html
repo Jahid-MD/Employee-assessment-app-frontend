@@ -1,5 +1,14 @@
 <div class="wrapper">
   <h1 class="text-center my-4">Employees List</h1>
+  <div class="text-center">
+    <input
+      type="text"
+      placeholder="Search Employees"
+      [(ngModel)]="search"
+      (ngModelChange)="onChangeSearchData($event)"
+      class="col px-2 search-bar"
+    />
+  </div>
   <div class="d-flex align-items-center justify-content-start flex-wrap">
     <div
       *ngFor="let employee of employees['keys']"

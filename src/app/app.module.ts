@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddPageComponent } from './components/add-page/add-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeletionDialogComponent } from './components/deletion-dialog/deletion-dialog.component';
@@ -41,6 +41,7 @@ const appRoutes: Routes = [
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
