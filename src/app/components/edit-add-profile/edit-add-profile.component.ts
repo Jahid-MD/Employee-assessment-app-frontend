@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EditAddProfileComponent implements OnInit {
   profileData: object;
+
+  //form validation
   formProfile = this.editAddForm.group({
     id: [''],
     name: ['', Validators.required],

@@ -20,7 +20,6 @@ export class DataService {
   }
   //http request for sending newly added employee's data
   addEmployee(newEmployeeData) {
-    console.log(newEmployeeData);
     this.http.post('/api/addEmployee', newEmployeeData).subscribe();
     this.router.navigate(['/']);
   }
@@ -42,7 +41,6 @@ export class DataService {
 
   //http request for getting data after searching
   findEmployee(searchData) {
-    console.log('serach api');
     this.http.get(`/api/employees/${searchData}`).subscribe((data) => {
       this.employeeMasterData = data;
       this.employeeData.next(data);

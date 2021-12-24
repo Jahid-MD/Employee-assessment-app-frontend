@@ -31,7 +31,6 @@ export class AddPageComponent implements OnInit {
 
   ngOnInit(): void {}
   onSubmit() {
-    console.log(this.formProfile.value);
     this.snackBar.open('New Employee Added', 'Dismiss');
 
     //inokes addEmployee function of data service

@@ -35,17 +35,17 @@ export class HomepageComponent implements OnInit {
     this.employeesDataService.fetchUpdateData();
   }
 
-  ngOnInit(): void {
-    // this.employeesDataService.employeeData.subscribe((data) => {
-    //   this.employees = data;
-    // });
-  }
+  ngOnInit(): void {}
+
   removeEmployee(employee) {
     this.employeesDataService.removeEmployee(employee);
   }
+
   editProfile(profileData) {
     this.employeesDataService.editProfileData = profileData;
   }
+
+  //opening of dialog box confirming deletion
   openDialog(employee) {
     let dialogRef = this.dialog.open(DeletionDialogComponent);
     dialogRef.afterClosed().subscribe((result) => {
@@ -54,11 +54,13 @@ export class HomepageComponent implements OnInit {
       }
     });
   }
+
+  //on clicking add employee button
   goToAddPage() {
     this.router.navigate(['./add']);
   }
 
-  onChangeSearchData(event) {
+  onChangeSearchData() {
     this.employeesDataService.findEmployee(this.search.toLowerCase());
   }
 }

@@ -26,7 +26,6 @@ export class AssessmentPageComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.http.get('./api/quizData').subscribe((data) => {
-      console.log(data);
       this.quizData = data;
     });
     this.quizDataService.employeeData.subscribe((data) => {
