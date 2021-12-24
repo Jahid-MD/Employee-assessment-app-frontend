@@ -24,3 +24,22 @@
   visibility: hidden;
   cursor: pointer;
 }
+
+.delete-popup {
+  margin: 0 auto;
+  width: 350px;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px white;
+}
+
+.delete-popup-wrapper {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.158);
+}

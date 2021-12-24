@@ -13,6 +13,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddPageComponent } from './components/add-page/add-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DeletionDialogComponent } from './components/deletion-dialog/deletion-dialog.component';
+
 const appRoutes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'edit-add', component: EditAddProfileComponent },
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     AssessmentPageComponent,
     HeaderComponent,
     AddPageComponent,
+    DeletionDialogComponent,
   ],
+  entryComponents: [DeletionDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

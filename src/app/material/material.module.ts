@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -15,6 +17,8 @@ const MaterialComponents = [
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
+  MatDialogModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

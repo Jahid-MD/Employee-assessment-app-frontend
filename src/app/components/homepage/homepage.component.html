@@ -33,11 +33,30 @@
           >
             <mat-icon inline="true">create</mat-icon>
           </a>
-          <a (click)="removeEmployee(employee)" class="icons">
+          <a (click)="openDialog(employee)" class="icons">
             <mat-icon inline="true">delete_outline</mat-icon>
           </a>
         </div>
       </div>
     </div>
+    <ng-template [ngIf]="!employees['keys']">
+      <p class="fs-2 w-100 mt-4 text-center">No data Avaliable</p>
+      <div class="w-100 text-center mt-4">
+        <button (click)="goToAddPage()" mat-button color="primary">
+          Add New Employee
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>
+
+<!-- <div class="delete-popup-wrapper">
+  <div class="delete-popup p-5">
+    <p class="h5">Do you want to remove this employee ?</p>
+    <div class="text-center mt-5">
+      <button class="btn btn-danger me-5">Delete</button>
+      <button class="btn btn-primary">Cancel</button>
+    </div>
+  </div>
+</div> -->
+<!-- <a (click)="removeEmployee(employee)" class="icons"> -->

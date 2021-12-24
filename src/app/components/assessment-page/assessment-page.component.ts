@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 @Component({
@@ -21,7 +22,8 @@ export class AssessmentPageComponent implements OnInit {
     private quizDataService: DataService,
     private assessmentForm: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.http.get('./api/quizData').subscribe((data) => {
       console.log(data);
@@ -67,11 +69,12 @@ export class AssessmentPageComponent implements OnInit {
     // // this.testFormProfile.reset({
     // //   employeeId: [''],
     // // });
-
-    this.http.put(`/api/updateScore/${id}`, { answers }).subscribe();
     this.testFormProfile.reset({
       employeeId: [''],
     });
+    this.http.put(`/api/updateScore/${id}`, { answers }).subscribe();
+    console.log(this.testFormProfile.valid);
+    this.snackBar.open('Assessment Submitted', 'Dismiss');
     this.router.navigate(['/']);
   }
 }

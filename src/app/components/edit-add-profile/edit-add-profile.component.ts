@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-edit-add-profile',
   templateUrl: './edit-add-profile.component.html',
@@ -21,7 +22,8 @@ export class EditAddProfileComponent implements OnInit {
   });
   constructor(
     private dataService: DataService,
-    private editAddForm: FormBuilder
+    private editAddForm: FormBuilder,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class EditAddProfileComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formProfile.value);
+    this.snackBar.open('Update Employee', 'Dismiss');
     this.updateEmployee(this.formProfile.value);
     this.formProfile.reset({
       name: [''],

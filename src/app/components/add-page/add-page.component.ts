@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-page',
@@ -22,11 +23,16 @@ export class AddPageComponent implements OnInit {
     designation: ['', Validators.required],
     score: ['--'],
   });
-  constructor(private dataService: DataService, private addForm: FormBuilder) {}
+  constructor(
+    private dataService: DataService,
+    private addForm: FormBuilder,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
   onSubmit() {
     console.log(this.formProfile.value);
+    this.snackBar.open('New Employee Added', 'Dismiss');
     this.dataService.addEmployee(this.formProfile.value);
     this.formProfile.reset({
       name: [''],
