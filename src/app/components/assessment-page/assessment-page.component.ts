@@ -47,33 +47,27 @@ export class AssessmentPageComponent implements OnInit {
     ques8: [null],
     ques9: [null],
   });
-  ngOnInit(): void {
-    console.log('=====> quiz data', this.quizData);
 
-    console.log('employees-------', this.employeesName);
-  }
+  ngOnInit(): void {}
+
   onSubmit() {
     let answers = [];
     let id = this.testFormProfile.value.employeeId;
-    console.log('id...............', id);
+
+    //separating answer data and employee's data
     for (let keys in this.testFormProfile.value) {
       if (keys != 'employeeId') {
         answers.push(this.testFormProfile.value[keys]);
       }
     }
-    // this.scoreData = {
-    //   id: this.testFormProfile.value.employeeId,
-    //   ans: answers,
-    // };
-    // this.quizDataService.updateScore(this.scoreData);
-    // // this.testFormProfile.reset({
-    // //   employeeId: [''],
-    // // });
+    //resets form
     this.testFormProfile.reset({
       employeeId: [''],
     });
+
+    //http request to send the answer data the backend
     this.http.put(`/api/updateScore/${id}`, { answers }).subscribe();
-    console.log(this.testFormProfile.valid);
+
     this.snackBar.open('Assessment Submitted', 'Dismiss');
     this.router.navigate(['/']);
   }

@@ -33,7 +33,11 @@ export class AddPageComponent implements OnInit {
   onSubmit() {
     console.log(this.formProfile.value);
     this.snackBar.open('New Employee Added', 'Dismiss');
+
+    //inokes addEmployee function of data service
     this.dataService.addEmployee(this.formProfile.value);
+
+    //resets the form
     this.formProfile.reset({
       name: [''],
       phoneNumber: [''],

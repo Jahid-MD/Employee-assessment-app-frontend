@@ -16,7 +16,10 @@ import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.comp
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
+  //this variable stores all fetched data of employees
   employees: object = { keys: [] };
+
+  //stores data searched employees name
   search: string;
 
   constructor(
@@ -27,20 +30,17 @@ export class HomepageComponent implements OnInit {
     this.employeesDataService.employeeData.subscribe((data) => {
       this.employees = data;
     });
-    console.log('=====>', this.employees);
+
+    // to make a http call if data of homepage is not updated
     this.employeesDataService.fetchUpdateData();
   }
 
   ngOnInit(): void {
-    console.log('======', this.employees['keys']);
-
-    this.employeesDataService.employeeData.subscribe((data) => {
-      this.employees = data;
-    });
-    console.log('=====>', this.employees);
+    // this.employeesDataService.employeeData.subscribe((data) => {
+    //   this.employees = data;
+    // });
   }
   removeEmployee(employee) {
-    console.log('{........');
     this.employeesDataService.removeEmployee(employee);
   }
   editProfile(profileData) {

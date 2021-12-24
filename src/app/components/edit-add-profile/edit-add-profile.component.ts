@@ -28,7 +28,7 @@ export class EditAddProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileData = this.dataService.editProfileData;
-    console.log(this.profileData);
+
     if (this.profileData != undefined) {
       this.formProfile.patchValue({
         id: this.profileData['id'],
@@ -41,17 +41,17 @@ export class EditAddProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    //displays snack bar on the screen
     this.snackBar.open('Update Employee', 'Dismiss');
+
+    //sends epmloyees data to the data service and invokes updateEmployee function
     this.dataService.updateEmployee(this.formProfile.value);
+
     this.formProfile.reset({
       name: [''],
       phoneNumber: [''],
       age: [''],
       designation: [''],
     });
-  }
-
-  updateEmployee(employeeUpdateData) {
-    this.dataService.updateEmployee(employeeUpdateData);
   }
 }
