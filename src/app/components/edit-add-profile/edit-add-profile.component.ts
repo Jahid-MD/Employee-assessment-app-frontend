@@ -43,7 +43,7 @@ export class EditAddProfileComponent implements OnInit {
   onSubmit() {
     console.log(this.formProfile.value);
     this.snackBar.open('Update Employee', 'Dismiss');
-    this.updateEmployee(this.formProfile.value);
+    this.dataService.updateEmployee(this.formProfile.value);
     this.formProfile.reset({
       name: [''],
       phoneNumber: [''],

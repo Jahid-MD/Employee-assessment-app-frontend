@@ -1,5 +1,8 @@
 <div class="wrapper">
+  <!-- Title of Homepage -->
   <h1 class="text-center my-4">Employees List</h1>
+
+  <!-- Search Bar for Employees-->
   <div class="text-center">
     <input
       type="text"
@@ -9,6 +12,7 @@
       class="col px-2 search-bar"
     />
   </div>
+  <!--    Employee Display Cards conationer    -->
   <div class="d-flex align-items-center justify-content-start flex-wrap">
     <div
       *ngFor="let employee of employees['keys']"
@@ -48,6 +52,7 @@
         </div>
       </div>
     </div>
+    <!--   ng-template on No Data Available-->
     <ng-template [ngIf]="!employees['keys']">
       <p class="fs-2 w-100 mt-4 text-center">No data Avaliable</p>
       <div class="w-100 text-center mt-4">
@@ -58,14 +63,3 @@
     </ng-template>
   </div>
 </div>
-
-<!-- <div class="delete-popup-wrapper">
-  <div class="delete-popup p-5">
-    <p class="h5">Do you want to remove this employee ?</p>
-    <div class="text-center mt-5">
-      <button class="btn btn-danger me-5">Delete</button>
-      <button class="btn btn-primary">Cancel</button>
-    </div>
-  </div>
-</div> -->
-<!-- <a (click)="removeEmployee(employee)" class="icons"> -->
