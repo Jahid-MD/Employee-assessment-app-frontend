@@ -1,55 +1,57 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { appData } from './employeeData';
-import { quizData } from './quizData';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { HomepageComponent } from './components/homepage/homepage.component';
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   employeeMasterData: object = {};
-  quizMasterData: object = quizData;
   editProfileData: object;
 
+  //Subject related employees data serviing all over the appp
   employeeData = new BehaviorSubject(this.employeeMasterData);
-  constructor(private http: HttpClient, private router: Router) {
-    this.http.get('api/employees').subscribe((data) => {
-      console.log(data);
-      this.employeeData.next(data);
-    });
-  }
 
-  fetchUpdateData() {
+  constructor(private http: HttpClient, private router: Router) {
+    //Http resquest on app getting start
     this.http.get('api/employees').subscribe((data) => {
       this.employeeData.next(data);
     });
   }
+  //http request for sending newly added employee's data
   addEmployee(newEmployeeData) {
     console.log(newEmployeeData);
     this.http.post('/api/addEmployee', newEmployeeData).subscribe();
     this.router.navigate(['/']);
   }
+
+  //http request for sending updated employee's data
   updateEmployee(employeeUpdateData) {
     this.http.put('/api/updateEmployee', employeeUpdateData).subscribe();
+    this.fetchUpdateData();
     this.router.navigate(['/']);
   }
 
+  //http request for deleting the employee from the data
   removeEmployee(employeeData) {
-    console.log('delted employee........', employeeData);
-    this.http
-      .delete(`/api/removeEmployee/${employeeData}`)
-      .subscribe((data) => {
-        console.log(data);
-      });
-    this.fetchUpdateData();
+    this.http.delete(`/api/removeEmployee/${employeeData}`).subscribe();
+    setTimeout(() => {
+      this.fetchUpdateData();
+    }, 300);
   }
+
+  //http request for getting data after searching
   findEmployee(searchData) {
     console.log('serach api');
     this.http.get(`/api/employees/${searchData}`).subscribe((data) => {
       this.employeeMasterData = data;
-      console.log('......', data);
+      this.employeeData.next(data);
+    });
+  }
+
+  //http for getting updated data after editing employee, employee deletion and adding new employee
+  fetchUpdateData() {
+    this.http.get('api/employees').subscribe((data) => {
       this.employeeData.next(data);
     });
   }

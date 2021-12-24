@@ -15,13 +15,10 @@ import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.comp
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
-export class HomepageComponent implements OnInit, OnDestroy {
-  employees: object = { keys: [0] };
+export class HomepageComponent implements OnInit {
+  employees: object = { keys: [] };
   search: string;
-  // @Output() editProfileData = new EventEmitter<object>();
-  // sendData(profileData: object) {
-  //   this.editProfileData.emit;
-  // }
+
   constructor(
     private employeesDataService: DataService,
     private dialog: MatDialog,
@@ -36,31 +33,22 @@ export class HomepageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('======', this.employees['keys']);
-    // console.log(this.employeesDataService.employeeMasterData);
-    // this.employees = this.employeesDataService.employeeMasterData;
+
     this.employeesDataService.employeeData.subscribe((data) => {
       this.employees = data;
     });
     console.log('=====>', this.employees);
   }
   removeEmployee(employee) {
-    // console.log(employee);
-    // console.log(this.employees[employee]);
-    // this.employees['keys'].splice(this.employees['keys'].indexOf(employee), 1);
-    // // console.log('....', this.employees);
     console.log('{........');
     this.employeesDataService.removeEmployee(employee);
-    // delete this.employees[employee];
   }
   editProfile(profileData) {
-    console.log('.........home page', profileData);
     this.employeesDataService.editProfileData = profileData;
   }
   openDialog(employee) {
     let dialogRef = this.dialog.open(DeletionDialogComponent);
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(Boolean(result));
-
       if (result == 'true') {
         this.removeEmployee(employee);
       }
@@ -73,5 +61,4 @@ export class HomepageComponent implements OnInit, OnDestroy {
   onChangeSearchData(event) {
     this.employeesDataService.findEmployee(this.search.toLowerCase());
   }
-  ngOnDestroy(): void {}
 }
