@@ -29,6 +29,12 @@
           <p class="lh-sm text-cliper">
             <b>Name : </b>{{ employees[employee].name }}
           </p>
+          <p
+            *ngIf="employees[employee]['name'].length > 20"
+            class="name-display text"
+          >
+            {{ employees[employee].name }}
+          </p>
           <p class="lh-sm"><b>Age : </b> {{ employees[employee].age }}</p>
           <p class="lh-sm">
             <b>Phone No. : </b> {{ employees[employee].phoneNumber }}

@@ -44,14 +44,29 @@
 }
 
 .employee-card {
+  z-index: 20;
   .text-cliper {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 95%;
+    width: 80%;
   }
   .text-cliper:hover {
-    overflow: visible;
-    font-size: 0.85rem;
+    & + .name-display {
+      padding: 10px;
+      display: block;
+      position: absolute;
+      top: 40px;
+      right: 0;
+      background-color: rgb(224, 211, 211);
+      z-index: 100;
+    }
   }
+  .name-display {
+    display: none;
+  }
+}
+
+.expand-card:hover {
+  position: relative;
 }

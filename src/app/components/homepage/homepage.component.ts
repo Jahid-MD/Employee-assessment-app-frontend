@@ -23,6 +23,8 @@ export class HomepageComponent implements OnInit {
   //stores data searched employees name
   search: string;
 
+  //mouse over the employee card;
+  mouseOver: boolean = false;
   constructor(
     private employeesDataService: DataService,
     private dialog: MatDialog,
