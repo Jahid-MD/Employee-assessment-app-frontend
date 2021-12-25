@@ -30,8 +30,8 @@
             <b>Name : </b>{{ employees[employee].name }}
           </p>
           <p
-            *ngIf="employees[employee]['name'].length > 20"
-            class="name-display text"
+            *ngIf="employees[employee]['name'].length >= 17"
+            class="name-display"
           >
             {{ employees[employee].name }}
           </p>

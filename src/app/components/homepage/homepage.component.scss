@@ -49,11 +49,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 80%;
+    width: 90%;
   }
   .text-cliper:hover {
     & + .name-display {
       padding: 10px;
+      border-radius: 6px;
       display: block;
       position: absolute;
       top: 40px;
