@@ -19,36 +19,38 @@
       > -->
       </mat-form-field>
     </div>
-    <div
-      *ngFor="let question of quizData['keys']"
-      class="p-4 d-block quiz-q shadow my-4"
-    >
-      <mat-label class="d-block mb-2 fw-bold">{{
-        quizData[question].question
-      }}</mat-label>
-      <mat-radio-group formControlName="{{ question }}">
-        <mat-radio-button class="d-block m-2" value="1">
-          {{ quizData[question]["options"][0] }}
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="2">
-          {{ quizData[question]["options"][1] }}
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="3">
-          {{ quizData[question]["options"][2] }}
-        </mat-radio-button>
-        <mat-radio-button class="d-block m-2" value="4">
-          {{ quizData[question]["options"][3] }}
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="text-center">
-      <button
-        mat-raised-button
-        class="bg-primary text-white"
-        [disabled]="!testFormProfile.valid"
+    <ng-container *ngIf="testFormProfile.value.employeeId !== ''">
+      <div
+        *ngFor="let question of quizData['keys']"
+        class="p-4 d-block quiz-q shadow my-4"
       >
-        Submit
-      </button>
-    </div>
+        <mat-label class="d-block mb-2 fw-bold">{{
+          quizData[question].question
+        }}</mat-label>
+        <mat-radio-group formControlName="{{ question }}">
+          <mat-radio-button class="d-block m-2" value="1">
+            {{ quizData[question]["options"][0] }}
+          </mat-radio-button>
+          <mat-radio-button class="d-block m-2" value="2">
+            {{ quizData[question]["options"][1] }}
+          </mat-radio-button>
+          <mat-radio-button class="d-block m-2" value="3">
+            {{ quizData[question]["options"][2] }}
+          </mat-radio-button>
+          <mat-radio-button class="d-block m-2" value="4">
+            {{ quizData[question]["options"][3] }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="text-center">
+        <button
+          mat-raised-button
+          class="bg-primary text-white"
+          [disabled]="!testFormProfile.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </ng-container>
   </form>
 </div>

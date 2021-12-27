@@ -14,54 +14,56 @@
   </div>
   <!--    Employee Display Cards conationer    -->
   <div class="d-flex align-items-center justify-content-start flex-wrap">
-    <div
-      *ngFor="let employee of employees['keys']"
-      class="col-4 py-3 px-2 employee-card"
-    >
-      <div class="d-flex shadow rounded-3 position-relative">
-        <img
-          class="m-2"
-          src="../../../assets/images/profile.png"
-          alt="img"
-          width="150px"
-        />
-        <div class="p-2 pt-3">
-          <p class="lh-sm text-cliper">
-            <b>Name : </b>{{ employees[employee].name }}
-          </p>
-          <p
-            *ngIf="employees[employee]['name'].length >= 17"
-            class="name-display"
-          >
-            {{ employees[employee].name }}
-          </p>
-          <p class="lh-sm"><b>Age : </b> {{ employees[employee].age }}</p>
-          <p class="lh-sm">
-            <b>Phone No. : </b> {{ employees[employee].phoneNumber }}
-          </p>
-          <p class="lh-sm">
-            <b>Designation : </b> {{ employees[employee].designation }}
-          </p>
-          <p class="lh-sm">
-            <b>Assessment score : </b> {{ employees[employee].score }}/10
-          </p>
-        </div>
-        <div class="position-absolute h6 m-2">
-          <a
-            class="icons"
-            (click)="editProfile(employees[employee])"
-            routerLink="/edit-add"
-          >
-            <mat-icon inline="true">create</mat-icon>
-          </a>
-          <a (click)="openDialog(employee)" class="icons">
-            <mat-icon inline="true">delete_outline</mat-icon>
-          </a>
+    <ng-container *ngIf="employees['keys'][0]; else NoDataAval">
+      <div
+        *ngFor="let employee of employees['keys']"
+        class="col-4 py-3 px-2 employee-card"
+      >
+        <div class="d-flex shadow rounded-3 position-relative">
+          <img
+            class="m-2"
+            src="../../../assets/images/profile.png"
+            alt="img"
+            width="150px"
+          />
+          <div class="p-2 pt-3">
+            <p class="lh-sm text-cliper">
+              <b>Name : </b>{{ employees[employee].name }}
+            </p>
+            <p
+              *ngIf="employees[employee]['name'].length >= 18"
+              class="name-display"
+            >
+              {{ employees[employee].name }}
+            </p>
+            <p class="lh-sm"><b>Age : </b> {{ employees[employee].age }}</p>
+            <p class="lh-sm">
+              <b>Phone No. : </b> {{ employees[employee].phoneNumber }}
+            </p>
+            <p class="lh-sm">
+              <b>Designation : </b> {{ employees[employee].designation }}
+            </p>
+            <p class="lh-sm">
+              <b>Assessment score : </b> {{ employees[employee].score }}/10
+            </p>
+          </div>
+          <div class="position-absolute h6 m-2">
+            <a
+              class="icons"
+              (click)="editProfile(employees[employee])"
+              routerLink="/edit-add"
+            >
+              <mat-icon inline="true">create</mat-icon>
+            </a>
+            <a (click)="openDialog(employee)" class="icons">
+              <mat-icon inline="true">delete_outline</mat-icon>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
     <!--   ng-template on No Data Available-->
-    <ng-template [ngIf]="emptyKeys">
+    <ng-template #NoDataAval>
       <p class="fs-2 w-100 mt-4 text-center">No data Avaliable</p>
       <div class="w-100 text-center mt-4">
         <button (click)="goToAddPage()" mat-button color="primary">

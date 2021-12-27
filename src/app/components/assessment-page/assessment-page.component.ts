@@ -18,6 +18,7 @@ export class AssessmentPageComponent implements OnInit {
   quizData: object = { keys: [] };
   employeesName: string[];
   scoreData: object;
+  testFormProfile: FormGroup;
   constructor(
     private quizDataService: DataService,
     private assessmentForm: FormBuilder,
@@ -25,27 +26,28 @@ export class AssessmentPageComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar
   ) {
+    this.testFormProfile = this.assessmentForm.group({
+      employeeId: ['', Validators.required],
+      ques0: [null],
+      ques1: [null],
+      ques2: [null],
+      ques3: [null],
+      ques4: [null],
+      ques5: [null],
+      ques6: [null],
+      ques7: [null],
+      ques8: [null],
+      ques9: [null],
+    });
+
     this.http.get('./api/quizData').subscribe((data) => {
       this.quizData = data;
     });
     this.quizDataService.employeeData.subscribe((data) => {
       this.employeesName = data['keys'];
     });
+    console.log(this.testFormProfile.value.employeeId);
   }
-
-  testFormProfile = this.assessmentForm.group({
-    employeeId: ['', Validators.required],
-    ques0: [null],
-    ques1: [null],
-    ques2: [null],
-    ques3: [null],
-    ques4: [null],
-    ques5: [null],
-    ques6: [null],
-    ques7: [null],
-    ques8: [null],
-    ques9: [null],
-  });
 
   ngOnInit(): void {}
 

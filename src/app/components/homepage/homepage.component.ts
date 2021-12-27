@@ -24,7 +24,6 @@ export class HomepageComponent implements OnInit {
   search: string;
 
   //mouse over the employee card;
-  mouseOver: boolean = false;
   constructor(
     private employeesDataService: DataService,
     private dialog: MatDialog,
@@ -38,14 +37,12 @@ export class HomepageComponent implements OnInit {
     this.employeesDataService.fetchUpdateData();
 
     //display condition when there is no employees data available
-    this.checkEmployeesAvailable();
   }
 
   ngOnInit(): void {}
 
   removeEmployee(employee) {
     this.employeesDataService.removeEmployee(employee);
-    this.checkEmployeesAvailable();
   }
 
   editProfile(profileData) {
@@ -69,14 +66,5 @@ export class HomepageComponent implements OnInit {
 
   onChangeSearchData() {
     this.employeesDataService.findEmployee(this.search.toLowerCase());
-  }
-  checkEmployeesAvailable() {
-    setTimeout(() => {
-      if (this.employees['keys'].length) {
-        this.emptyKeys = false;
-      } else {
-        this.emptyKeys = true;
-      }
-    }, 2000);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -9,25 +9,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-page.component.scss'],
 })
 export class AddPageComponent implements OnInit {
-  formProfile = this.addForm.group({
-    name: ['', Validators.required],
-    // phoneNumber: [
-    //   '',
-    //   [Validators.maxLength(10), Validators.minLength(10), Validators.required],
-    // ],
-    phoneNumber: [
-      '',
-      [Validators.required, Validators.maxLength(10), Validators.minLength(10)],
-    ],
-    age: ['', [Validators.required, Validators.max(65), Validators.min(18)]],
-    designation: ['', Validators.required],
-    score: ['--'],
-  });
+  formProfile: FormGroup;
   constructor(
     private dataService: DataService,
     private addForm: FormBuilder,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.formProfile = this.addForm.group({
+      name: ['', Validators.required],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
+      age: ['', [Validators.required, Validators.max(65), Validators.min(18)]],
+      designation: ['', Validators.required],
+      score: ['--'],
+    });
+  }
 
   ngOnInit(): void {}
   onSubmit() {
@@ -37,11 +39,6 @@ export class AddPageComponent implements OnInit {
     this.dataService.addEmployee(this.formProfile.value);
 
     //resets the form
-    this.formProfile.reset({
-      name: [''],
-      phoneNumber: [''],
-      age: [''],
-      designation: [''],
-    });
+    this.formProfile.reset({});
   }
 }

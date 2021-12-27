@@ -20,7 +20,7 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Phone</mat-label>
           <input
-            type="text"
+            type="number"
             matInput
             placeholder="+91 910011000"
             id="phoneNumber"
@@ -31,7 +31,7 @@
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>Age</mat-label>
           <input
-            type="text"
+            type="number"
             matInput
             placeholder="Age"
             id="age"
@@ -53,7 +53,11 @@
         <div class="text-center">
           <button
             mat-raised-button
-            class="bg-primary text-white"
+            class=""
+            [ngClass]="{
+              'text-muted bg-light': !formProfile.valid,
+              'bg-primary text-white': formProfile.valid
+            }"
             [disabled]="!formProfile.valid"
           >
             Save

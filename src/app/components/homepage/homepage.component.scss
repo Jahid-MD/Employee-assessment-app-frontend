@@ -44,12 +44,11 @@
 }
 
 .employee-card {
-  z-index: 20;
   .text-cliper {
+    max-width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 90%;
   }
   .text-cliper:hover {
     & + .name-display {
